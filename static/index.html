@@ -2,10 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detector 🎭</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>APP IS WORKING</h1>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎭 Emotion Detector</h1>
+            <p>Analyze the emotional tone of your text</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="textInput" 
+                        placeholder="Type your text here... (max 2000 characters)"
+                        maxlength="2000"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span>/2000
+                    </div>
+                </div>
+                <button id="analyzeBtn" class="btn-primary">Analyze Emotion</button>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loadingSpinner" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your emotion...</p>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                
+                <!-- Primary Emotion -->
+                <div class="primary-result">
+                    <div class="emotion-display">
+                        <span id="emotionEmoji" class="emoji-large">😊</span>
+                        <div class="emotion-info">
+                            <h2 id="emotionName">Joy</h2>
+                            <div class="confidence-bar">
+                                <div id="confidenceBar" class="confidence-fill" style="width: 0%"></div>
+                            </div>
+                            <p class="confidence-text">
+                                Confidence: <span id="confidenceScore">0%</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Probabilities Chart -->
+                <div class="probabilities-section">
+                    <h3>Emotion Breakdown</h3>
+                    <div class="emotion-bars">
+                        <div class="emotion-bar" data-emotion="sadness">
+                            <span class="emotion-label">😢 Sadness</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-sadness"></div>
+                            </div>
+                            <span class="bar-value" id="val-sadness">0%</span>
+                        </div>
+                        <div class="emotion-bar" data-emotion="joy">
+                            <span class="emotion-label">😄 Joy</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-joy"></div>
+                            </div>
+                            <span class="bar-value" id="val-joy">0%</span>
+                        </div>
+                        <div class="emotion-bar" data-emotion="love">
+                            <span class="emotion-label">❤️ Love</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-love"></div>
+                            </div>
+                            <span class="bar-value" id="val-love">0%</span>
+                        </div>
+                        <div class="emotion-bar" data-emotion="anger">
+                            <span class="emotion-label">😠 Anger</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-anger"></div>
+                            </div>
+                            <span class="bar-value" id="val-anger">0%</span>
+                        </div>
+                        <div class="emotion-bar" data-emotion="fear">
+                            <span class="emotion-label">😨 Fear</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-fear"></div>
+                            </div>
+                            <span class="bar-value" id="val-fear">0%</span>
+                        </div>
+                        <div class="emotion-bar" data-emotion="surprise">
+                            <span class="emotion-label">😲 Surprise</span>
+                            <div class="bar-container">
+                                <div class="bar-fill" id="bar-surprise"></div>
+                            </div>
+                            <span class="bar-value" id="val-surprise">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyzed Text -->
+                <div class="analyzed-text">
+                    <h3>Your Text</h3>
+                    <p id="analyzedTextDisplay"></p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="resetBtn" class="btn-secondary">Analyze Another</button>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by BiGRU Neural Network 🧠</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
